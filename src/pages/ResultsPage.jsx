@@ -6,16 +6,47 @@ import { QueriedDataContent } from "../components/QueriedDataContent";
 import { TopBar } from "../components/TopBar";
 import { Typography } from "@material-ui/core";
 
+/**
+ * This is our Results Page!
+ * This is the page that we want to render when we route to /results.
+ * The objective of this page is to render all the Github issues that we have fetched from a GitHub API.
+ *
+ * We will useLocation which is another React Router hook!
+ * This hook returns the location object used by the react-router. This object represents the current URL and is immutable.
+ * Whenever the URL changes, the useLocation() hook returns a newly updated location object.
+ * We will use this to extract from the state of our previous useHistory().
+ *
+ * Using the location object from const location = useLocation(); we will access the state from the entry we had
+ * pushed earlier from the SearchSection component. We will extract the data from it necessary to do the API call.
+ *
+ */
 export const ResultsPage = () => {
   const location = useLocation();
   const { width, height } = useWindowDimensions();
+
+  // Two examples of useState hooks!
+
+  // useState hook to keep track of the queriedData. Everytime we successfully do an API call and fetch the json response, we
+  // will store it in the queriedData with the method setQueriedData()
   const [queriedData, setQueriedData] = useState([]);
+
+  // Use this hook to useState hook to keep track of pageNum and update.
   const [pageNum, setPageNum] = React.useState(1);
 
-  // /repos/{owner}/{repo}/issues
-  // https://api.github.com/repos/{owner}/{repo}
-  // https://docs.github.com/en/rest/reference/issues#list-repository-issues
-  // https://api.github.com/repos/facebook/react/issues?state=open
+  /**
+   * Now, let's take a look at the GitHib api!
+   * GitHub API docs: https://docs.github.com/en/rest/reference/issues#list-repository-issues
+   *
+   * Objective: Use GitHub API to show a list of all the GitHub issues from a specific repo!
+   *
+   * We will use the following API
+   * List issues in a repository.
+   * Format: /repos/{owner}/{repo}/issues
+   *  https://api.github.com/repos/{owner}/{repo}
+   *
+   * Example: https://api.github.com/repos/facebook/react/issues?state=open
+   *
+   */
 
   const fetchData = async () => {
     try {
@@ -27,15 +58,14 @@ export const ResultsPage = () => {
       const json = await response.json();
       if (json.message) throw new Error(json.message);
       setQueriedData(json);
-      
     } catch (err) {
       console.log(err);
       setQueriedData([]);
     }
   };
 
-  const handlePaginationChange = (event, currentPage) => {
-    setPageNum(currentPage);
+  const handlePaginationChange = (event, pageNumber) => {
+    setPageNum(pageNumber);
   };
 
   // useeffect when value changes when u click bottom thigny

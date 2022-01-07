@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 /**
- * Method to update the Window Dimensions
+ * Hook to update the Window Dimensions
  * Documentation: https://usehooks.com/useWindowSize/
  */
 export const useWindowDimensions = () => {

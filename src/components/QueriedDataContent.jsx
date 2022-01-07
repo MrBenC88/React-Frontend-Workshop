@@ -3,7 +3,6 @@ import {
   Card,
   GridList,
   GridListTile,
-  CardActionArea,
   CardContent,
 } from "@material-ui/core";
 
@@ -24,7 +23,7 @@ export const QueriedDataContent = ({ queriedData }) => {
                 {(mapDatum.pull_request && mapDatum.state !== "closed") ||
                 (mapDatum.state === "open" && mapDatum.pull_request) ? (
                   <span>
-                    <Typography>Pull Request</Typography>{" "}
+                    <Typography>Pull Request</Typography>
                   </span>
                 ) : mapDatum.state === "closed" ? (
                   <span>
@@ -32,7 +31,6 @@ export const QueriedDataContent = ({ queriedData }) => {
                   </span>
                 ) : (
                   <span>
-                    {" "}
                     <Typography> Issue</Typography>
                   </span>
                 )}
