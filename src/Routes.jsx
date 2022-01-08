@@ -22,6 +22,12 @@ export const Routes = () => {
       <Switch>
         <Route exact path="/" component={Home} />
 
+        {/* TODO #2: Import the Results Page, look at the Home import statement on line 4 for reference!
+                     Add two routes following the format above!
+
+        - /home should route to the Home component
+        - /results should route to the ResultsPage component */}
+
         <Route exact path="/home" component={Home} />
 
         <Route path="/results" component={ResultsPage} />

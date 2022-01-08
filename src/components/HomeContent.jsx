@@ -49,6 +49,8 @@ export const HomeContent = () => {
 
         {/* We call our search component for our search bar here! It is generally better design to extract reusable 
         parts of code into components which can be found in the components folder */}
+
+        {/* TODO #4: Navigate into the <SearchSection/> component and try to understand what it does!  */}
         <SearchSection />
 
         <Typography variant="h6">

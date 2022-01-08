@@ -19,11 +19,19 @@ export const SearchSection = () => {
   We define search which will be a variable current equal to an empty string (from the useState("") which is our default value we have set).
   We will define a setSearch function enabling us to update the search variable. This function is called inside an event handler usually.
   */
+
+  // =================================================================================================================================
+
+  // TODO #5: Create a new useState hook with a var called search and method called setSearch.
+  //          Set the initial state to be an empty string!
+
   const [search, setSearch] = useState("");
+
+  // =================================================================================================================================
 
   /* 
     We will be using a useHistory hook provided from the React Router. It enables us to access the history instance used by React Router.
-    This will enable us to redirect users to another page and also access data from the previous page upon.
+    This will enable us to redirect users to another page and also access data from the previous page.
     useHistory has many properties, but we will use specifically the pathname and state.
 
     pathname: A string containing the path of the URL
@@ -61,6 +69,10 @@ export const SearchSection = () => {
 
   We use 0-based array indexing to get the values we want.
   */
+
+  // =================================================================================================================================
+  // TODO #7: Attempt to understand the logic of the handleSearch event handler!
+
   const handleSearch = (query) => {
     console.log(`parse data and Call GitHub API:  ${query}`);
     const arr = query.split("/");
@@ -91,11 +103,19 @@ export const SearchSection = () => {
       alert("Invalid Repo URL");
     }
   };
+  // =================================================================================================================================
 
   return (
     // render the actual SearchBar component.
     // onChange-> Fired when the text value changes. (inside SearchBar)
     // onRequestSearch-> Fired when the search icon is clicked. (or user presses enter key)
+
+    // TODO #6: Import the SearchBar and use the following properties!
+    // - value={""}     // done for you
+    // - onChange = ?          // Call the setSearch function upon change in the input! onChange!
+    // - onRequestSearch = ?   // Call the handleSearch event handler function upon search (user clicks enter)
+    // - placeholder={"Paste a link to a GitHub repository!"} // done for you!
+
     <div>
       <SearchBar
         value={""}

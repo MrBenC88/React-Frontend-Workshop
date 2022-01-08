@@ -52,12 +52,20 @@ export const QueriedDataContent = ({ queriedData }) => {
                   </span>
                 )}
 
+                {/*  ================================================================================================================================================ */}
+                {/* TODO #14: Add the following properties into the card! (from the API response)
+                    - number
+                    - state
+                    - title 
+                */}
                 {/* Note how we can simply access the properties within the json! */}
                 <Typography variant="h6">
                   #{mapDatum.number} | State: {mapDatum.state}
                   <br />
                   {mapDatum.title}
                 </Typography>
+
+                {/*  ================================================================================================================================================ */}
               </CardContent>
             </Card>
           </GridListTile>

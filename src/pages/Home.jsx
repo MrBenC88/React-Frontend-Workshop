@@ -13,6 +13,9 @@ import { HomeContent } from "../components/HomeContent";
  *                https://reactjs.org/docs/components-and-props.html
  */
 
+
+//  TODO #3: Navigate into the HomeContent component and try to understand the code!
+
 export const Home = () => {
   return <HomeContent />; // Our component that contains the Home's component
 };
