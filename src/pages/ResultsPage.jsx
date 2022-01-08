@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useWindowDimensions } from "../hooks/useWindowDimensions";
-import Pagination from "@material-ui/lab/Pagination";
+
 import { QueriedDataContent } from "../components/QueriedDataContent";
 import { TopBar } from "../components/TopBar";
-import { Typography } from "@material-ui/core";
 
+import { Typography } from "@material-ui/core";
+import Pagination from "@material-ui/lab/Pagination";
 /**
  * This is our Results Page!
  * This is the page that we want to render when we route to /results.
@@ -50,20 +51,32 @@ export const ResultsPage = () => {
 
   const fetchData = async () => {
     try {
-      let apiValue = "all";
-
+      // The Fetch API accesses resources across the network.
+      // You can make HTTP requests (using GET, POST and other methods), download, and upload files.
+      // We are doing a GET req to the GitHub API
+      // fetch() starts a request and returns a promise. When the request completes, the promise is resolved
+      // with the Response object. If the request fails due to some network problems, the promise is rejected.
+      // Documentation: https://dmitripavlutin.com/javascript-fetch-async-await/
       const response = await fetch(
-        `https://api.github.com/repos/${location.state.owner}/${location.state.repo}/issues?state=${apiValue}&page=${pageNum}&per_page=21`
+        `https://api.github.com/repos/${location.state.owner}/${location.state.repo}/issues?state=all&page=${pageNum}&per_page=21`
       );
+      // waits until the request completes..
+
       const json = await response.json();
+
       if (json.message) throw new Error(json.message);
+
+      // use the setQueriedData method to update our queriedData state to be our response.
       setQueriedData(json);
     } catch (err) {
+      // if error, log error and set the queriedData state to be empty
       console.log(err);
       setQueriedData([]);
     }
   };
 
+  // event handler to handle change of page number
+  // sets the pageNum state with the setPageNum method
   const handlePaginationChange = (event, pageNumber) => {
     setPageNum(pageNumber);
   };
@@ -72,8 +85,18 @@ export const ResultsPage = () => {
   // call fetch data in that useefffect or when the page num changes also call fetch data
   // pagination to change page number - onclick change pagenum react hook
 
+  /*
+  What does useEffect do? By using this Hook, you tell React that your component needs to do something after render. 
+  React will remember the function you passed (we’ll refer to it as our “effect”), and call it later after performing the DOM updates.
+  
+  In this case, we will call the fetchData method everytime the location or pageNum values are changed.
+  Why? The reason is because when we select a different page, we need a brand new API call with the updated values! 
+
+  Documentation:
+  - https://reactjs.org/docs/hooks-reference.html#useeffect
+  - https://reactjs.org/docs/hooks-effect.html
+  */
   useEffect(() => {
-    // api call - this api call was deceptively simple. it was actually hard af? wtf
     (async () => {
       await fetchData();
     })();
@@ -89,12 +112,17 @@ export const ResultsPage = () => {
         flexDirection: "column",
       }}
     >
+      {/* The component representing the bar at top (contains App title and button to direct to new search) */}
       <TopBar />
 
+      {/* Section for text displaying current repo. */}
       <Typography variant="h6">
         Current Repo: {location.state.owner} / {location.state.repo}
       </Typography>
 
+      {/* The bulk of the application. This component contains the grid of card components and uses the queriedData from the API.
+      In React, we will pass props that are necessary into the component as shown below. 
+      Documentation for using components with props: https://reactjs.org/docs/components-and-props.html*/}
       <QueriedDataContent queriedData={queriedData} />
 
       <div
@@ -107,6 +135,13 @@ export const ResultsPage = () => {
           justifyContent: "center",
         }}
       >
+        {/* What is paginaiton? 
+        Pagination, also known as paging, is the process of dividing a document into discrete pages, either electronic pages or printed pages
+        
+        As the GitHub API returns possibly an incredibly large amount of data. Pagination is necessary to split the data.
+        We query the data by page with each page showing only 21 results. 
+        
+        We use the handlePaginationChange event handler that is triggered everytime the user selects a different page number.*/}
         <Pagination
           count={10}
           color="primary"
