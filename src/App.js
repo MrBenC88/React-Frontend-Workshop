@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes } from "./Routes";
+
 
 /**
  * The App.js is a file for the App component. It is the main component in React which acts as a container for all othercomponents.
@@ -14,8 +14,7 @@ function App() {
   return (
     <div className="App">
       {/* TODO #1: Comment out the hello world h1 tag, import the Routes component and add to this div! */}
-      {/* <h1>Hello World!</h1> */}
-      <Routes />
+      <h1>Hello World!</h1>
     </div>
   );
 }

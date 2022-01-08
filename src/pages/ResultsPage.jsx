@@ -33,7 +33,7 @@ export const ResultsPage = () => {
 
   // useState hook to keep track of the queriedData. Everytime we successfully do an API call and fetch the json response, we
   // will store it in the queriedData with the method setQueriedData()
-  const [queriedData, setQueriedData] = useState([]);
+ 
 
   // =================================================================================================================================================
 
@@ -67,20 +67,18 @@ export const ResultsPage = () => {
       // ================================================================================================================================================
       // TODO #9: Complete the fetch! Look at the GitHub documentation for the "List issues in a repository"
       //          Hint: https://api.github.com/repos/facebook/react/issues?state=all&page=$1&per_page=21
-      const response = await fetch(
-        `https://api.github.com/repos/${location.state.owner}/${location.state.repo}/issues?state=all&page=${pageNum}&per_page=21`
-      );
+      const response = "";
       // waits until the request completes..
 
       // TODO #10: Store the response in the json var.
-      const json = await response.json();
+      const json = "";
 
       // ================================================================================================================================================
       if (json.message) throw new Error(json.message);
 
 
       // TODO #11: use the setQueriedData method to update our queriedData state to be our response.
-      setQueriedData(json);
+
 
     } catch (err) {
       // if error, log error and set the queriedData state to be empty
@@ -112,9 +110,9 @@ export const ResultsPage = () => {
   // TODO #12: Complete the following useEffect. Call the fetchData method everytime the location or pageNum changes!
   useEffect(() => {
     (async () => {
-      await fetchData();
+      
     })();
-  }, [location, pageNum]);
+  }, []);
   //  ================================================================================================================================================ 
 
   return (
@@ -142,7 +140,7 @@ export const ResultsPage = () => {
       In React, we will pass props that are necessary into the component as shown below. 
       Documentation for using components with props: https://reactjs.org/docs/components-and-props.html*/}
 
-      <QueriedDataContent queriedData={queriedData} />
+      
       {/*  ================================================================================================================================================ */}
       
       

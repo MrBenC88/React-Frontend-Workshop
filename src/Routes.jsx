@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { Home } from "./pages/Home";
-import { ResultsPage } from "./pages/ResultsPage";
+
 
 /**
  * We use the react-router-dom library to simplify routing in our application.
@@ -28,9 +28,7 @@ export const Routes = () => {
         - /home should route to the Home component
         - /results should route to the ResultsPage component */}
 
-        <Route exact path="/home" component={Home} />
 
-        <Route path="/results" component={ResultsPage} />
       </Switch>
     </BrowserRouter>
   );

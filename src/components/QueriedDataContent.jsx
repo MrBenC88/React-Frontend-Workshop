@@ -60,9 +60,9 @@ export const QueriedDataContent = ({ queriedData }) => {
                 */}
                 {/* Note how we can simply access the properties within the json! */}
                 <Typography variant="h6">
-                  #{mapDatum.number} | State: {mapDatum.state}
+
                   <br />
-                  {mapDatum.title}
+
                 </Typography>
 
                 {/*  ================================================================================================================================================ */}

@@ -25,7 +25,6 @@ export const SearchSection = () => {
   // TODO #5: Create a new useState hook with a var called search and method called setSearch.
   //          Set the initial state to be an empty string!
 
-  const [search, setSearch] = useState("");
 
   // =================================================================================================================================
 
@@ -117,12 +116,7 @@ export const SearchSection = () => {
     // - placeholder={"Paste a link to a GitHub repository!"} // done for you!
 
     <div>
-      <SearchBar
-        value={""}
-        onChange={(searchInput) => setSearch(searchInput)}
-        onRequestSearch={() => handleSearch(search)}
-        placeholder={"Paste a link to a GitHub repository!"}
-      />
+
     </div>
   );
 };

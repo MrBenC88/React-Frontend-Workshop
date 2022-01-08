@@ -1,1 +1,1 @@
-# Frontend React Workshop
+# Frontend React Workshop - STARTER
