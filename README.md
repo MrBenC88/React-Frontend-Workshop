@@ -11,4 +11,6 @@ Workshop brought to you by [nwPlus](https://www.nwplus.io/). <br/>
 📌 Slides: [See Slides](TBA)<br/>
 📌 Workshop Companion Guide: [See Guide](https://nwplus.notion.site/Workshop-Companion-Notes-Guide-d99c63f5f7194a92950db892ec8a11e1)<br/>
 
+
 📌 Workshop Recording: [See Video](TBA)
+📌 Backup Workshop Notion: [See Notion](https://mrbenc88.notion.site/nwPlus-Frontend-w-React-Heroku-a4bd706a9550400ab8ac5a4b118cebfd)<br/>
